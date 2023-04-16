@@ -68,10 +68,15 @@ tempPY.close()
 
 layout = [
     [
-        sg.Output(size=(106, 20), font='Courier 10', text_color='orange')
-    ],
-    [
-        sg.Text(' ' * 120)
+        sg.Multiline(default_text="directions here...\n\n",
+                     size=(108, 20),
+                     font='Courier 10',
+                     text_color='orange',
+                     auto_refresh=True,
+                     reroute_stdout=True,
+                     reroute_stderr=True,
+                     pad=((0, 0), (0, 20))
+                     )
     ],
     [
         sg.Text("Hip Path"),
@@ -83,34 +88,27 @@ layout = [
     [
         sg.Text("Out Path"),
         sg.Combo(sg.user_settings_get_entry('-outnames-', []),
-                 default_value=sg.user_settings_get_entry('-last outname-', ''), size=(100, 1), key='outnode'),
+                 default_value=sg.user_settings_get_entry('-last outname-', ''), size=(110, 1), key='outnode'),
     ],
     [
         sg.Checkbox('Out is a merge node', default=sg.user_settings_get_entry(
-            '-last merge-', False), key='merge', enable_events=True)
-    ],
-    [
+            '-last merge-', False), key='merge', enable_events=True, pad=((75, 0), (0, 20))),
+        sg.Stretch(),
         sg.Checkbox('Use Frame Range', default=sg.user_settings_get_entry(
-            '-last userange-', False), key='userange', enable_events=True, disabled=sg.user_settings_get_entry('-last merge-')),
-        sg.Text("from"),
+            '-last userange-', False), key='userange', enable_events=True, disabled=sg.user_settings_get_entry('-last merge-'), pad=((0, 0), (0, 20))),
+        sg.Text(" from ", pad=((0, 0), (0, 20))),
         sg.In(sg.user_settings_get_entry('-last start-', 0),
-              size=(10, 1), enable_events=True, key='sframe', disabled=not sg.user_settings_get_entry('-last userange-')),
-        sg.Text("to"),
+              size=(10, 1), enable_events=True, key='sframe', disabled=not sg.user_settings_get_entry('-last userange-'), pad=((0, 0), (0, 20))),
+        sg.Text(" to ", pad=((0, 0), (0, 20))),
         sg.In(sg.user_settings_get_entry('-last end-', 100),
-              size=(10, 1), enable_events=True, key='eframe', disabled=not sg.user_settings_get_entry('-last userange-'))
+              size=(10, 1), enable_events=True, key='eframe', disabled=not sg.user_settings_get_entry('-last userange-'), pad=((0, 0), (0, 20)))
     ],
     [
-        sg.Text(' ' * 120)
-    ],
-    [
-        sg.Button("Save To History"),
-        sg.Button("Reset to Defaults and Clear History")
-    ],
-    [
-        sg.Text(' ' * 120)
-    ],
-    [
-        sg.Button("Render"),
+        sg.Button("Save To Form History", pad=((75, 0), (0, 20))),
+        sg.Button("Reset Form to Defaults and Clear History",
+                  pad=((0, 0), (0, 20))),
+        sg.Stretch(),
+        sg.Button("Render", pad=((0, 0), (0, 20)))
     ]
 ]
 
@@ -137,6 +135,7 @@ while True:
             window['sframe'].update(disabled=True)
             window['eframe'].update(disabled=True)
             window['userange'].update(disabled=True)
+            print('Out is a merge node: For batch rendering. Point the "Out Path" field to a merge node with multiple ROPs connected to it. Each ROP should have "Non-blocking Current Frame Rendering" unchecked.\n')
 
     if event == "userange":
         if values['userange'] == False:
@@ -146,7 +145,7 @@ while True:
             window['sframe'].update(disabled=False)
             window['eframe'].update(disabled=False)
 
-    if event == "Save To History":
+    if event == "Save To Form History":
 
         sg.user_settings_set_entry(
             '-hipnames-', list(set(sg.user_settings_get_entry('-hipnames-', []) + [hip, ])))
@@ -161,7 +160,7 @@ while True:
 
         print("Saved.")
 
-    if event == "Reset to Defaults and Clear History":
+    if event == "Reset Form to Defaults and Clear History":
         sg.user_settings_set_entry('-hipnames-', [])
         sg.user_settings_set_entry('-outnames-', [])
         sg.user_settings_set_entry('-last hipname-', default_folder)
