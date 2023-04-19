@@ -4,11 +4,11 @@ from optparse import OptionParser
 def initRender(out, sframe, eframe, userange, merge):
     rnode = hou.node(out)
     if (merge == "True"):
-        rnode.render()
+        rnode.render(output_progress=True)
     elif (userange == "True"):
-        rnode.render(frame_range=(sframe, eframe))
+        rnode.render(frame_range=(sframe, eframe), output_progress=True)
     else:
-        rnode.render(frame_range=(rnode.parm("f1").eval(), rnode.parm("f2").eval()))
+        rnode.render(frame_range=(rnode.parm("f1").eval(), rnode.parm("f2").eval()), output_progress=True)
 
 if __name__ == "__main__":
     parser = OptionParser()

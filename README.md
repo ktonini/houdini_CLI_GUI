@@ -3,6 +3,7 @@ Houdini GUI CLI render submitter (local)
 
 ### Requirements:
 * python3
+* PySimpleGUI >= 4.61.0.156
 * houdini
 * redshift
 
