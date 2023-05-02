@@ -20,6 +20,6 @@ Houdini GUI CLI render submitter (local)
 * exr (and channels) preview
 * skip already rendered frames checkbox
 * fix: right now if canceled before frame render, user gets message that it will be canceled, but never that it was right away
-* open output folder form UI
+* open output folder from UI
 * remember settings for window size, output view toggle, ...?
 * resize output text with command + and command -
