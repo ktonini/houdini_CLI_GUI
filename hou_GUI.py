@@ -1,17 +1,5 @@
 #!/usr/bin/python3
 
-# TODO:
-# checkbox for overwriting files
-# grab recent hip files from /home/keith/houdini19.5/file.history
-# get out path from hip and place ROPS in dropdown
-# nth frame override
-# exr (and channels) preview - need output location somehow
-# skip already rendered frames checkbox
-# fix: right now if canceled before frame render, user gets message that it will be canceled, but never that it was right away
-# open output folder form UI
-# remember settings for window size, output view toggle, ...?
-# resize output text with command + and command -
-
 import datetime
 import os
 import re

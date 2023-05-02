@@ -7,19 +7,19 @@ Houdini GUI CLI render submitter (local)
 * houdini
 * redshift
 
-### Changelog-
-v0.01
-* Fixed `Use Frame Range` checkbox - when unchecked it now defaults to the render node's frame range
-* `Use Frame Range` checkbox and `start` and `end` frame fields default to previously submitted values
-* Remember window placement
-* `file` and `/out/node` history
-* Switched to `gnome-terminal`
-* Added working location
-* Added darker theme
-* Made temp filename more descriptive
-* `Browse` button now defaults to last file's containing folder
-
+### Known Issues:
+* Kill button kills the app as well instead of only the thread
 
 ### To Do:
 * Add 'increment' integer field - default to 1
 * Add 'skip existing' checkbox
+* checkbox for overwriting files
+* grab recent hip files from /path/to/houdiniXX.X/file.history
+* get out path from hip and place ROPS in dropdown
+* nth frame override
+* exr (and channels) preview
+* skip already rendered frames checkbox
+* fix: right now if canceled before frame render, user gets message that it will be canceled, but never that it was right away
+* open output folder form UI
+* remember settings for window size, output view toggle, ...?
+* resize output text with command + and command -
