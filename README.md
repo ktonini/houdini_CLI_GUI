@@ -1,4 +1,4 @@
-# houdini_CLI_GUI
+# Hardeen
 Houdini GUI CLI render submitter (local)
 
 ### Requirements:

@@ -35,7 +35,7 @@ except ImportError:
 
 DEFAULT_FOLDER = '/mnt/Data/active_jobs/'
 DEFAULT_OUTNODE = '/out/Redshift_ROP1'
-DEFAULT_LOG = DEFAULT_FOLDER + 'output.txt'
+DEFAULT_LOG = DEFAULT_FOLDER + 'hardeen.log'
 VERSION_NUM = 'v1.0'
 disabledTextColor = "#ff4c00"
 icon_browse = b'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'
@@ -53,7 +53,7 @@ else:
 def create_temp_python_file():
     """Create the temporary Python file for Houdini"""
     dir_path = os.path.dirname(os.path.realpath(__file__))
-    temp_file = os.path.join(dir_path, 'houdini_cli_temp.py')
+    temp_file = os.path.join(dir_path, 'hardeen_temp.py')
     
     if os.path.exists(temp_file):
         os.remove(temp_file)
@@ -72,7 +72,7 @@ def initRender(out, sframe, eframe, userange, useskip):
     def dataHelper(rop_node, render_event_type, frame):
         if render_event_type == hou.ropRenderEventType.PostFrame:
             output_file = rnode.evalParm("RS_outputFileNamePrefix")
-            print(f"hgui_outputfile: {output_file}")
+            print(f"hardeen_outputfile: {output_file}")
 
     rnode.addRenderEventCallback(dataHelper)
 
@@ -86,7 +86,7 @@ def initRender(out, sframe, eframe, userange, useskip):
     if "merge" in str(rnode.type()).lower():
         rnode.render()
         if userange == "True":
-            print("hgui_note: Out Path leads to a merge node, but you have selected to override the frame range. "
+            print("hardeen_note: Out Path leads to a merge node, but you have selected to override the frame range. "
                   "Defaulting to the frame range that was set from within Houdini for each ROP.")
     else:
         if userange == "True":
@@ -269,7 +269,7 @@ class HoudiniRenderGUI(QMainWindow):
         self.resize(1200, 800)  # Set default window size to 1200x800
         
         # First create all widgets
-        self.setWindowTitle("Houdini Render GUI")
+        self.setWindowTitle("Hardeen")
         self.setStyleSheet("""
             QMainWindow {
                 background-color: #3a3a3a;
@@ -1183,7 +1183,7 @@ class HoudiniRenderGUI(QMainWindow):
         # Build command list without quotes
         cmd = [
             'hython',
-            os.path.join(dir_path, 'houdini_cli_temp.py'),
+            os.path.join(dir_path, 'hardeen_temp.py'),
             '-i', self.hip_input.currentText(),
             '-o', self.out_input.currentText(),
             '-s', self.start_frame.text(),
@@ -1342,7 +1342,7 @@ class HoudiniRenderGUI(QMainWindow):
                 self.raw_output_signal.emit(line)
                 
                 # Check for new rendered image
-                if 'hgui_outputfile:' in line:
+                if 'hardeen_outputfile:' in line:
                     self.renderedImage = line.split(': ')[1]
                     self.image_update_signal.emit(self.renderedImage)
                     
